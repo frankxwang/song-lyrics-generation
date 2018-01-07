@@ -38,5 +38,6 @@ fabric.properties
 floyd_requirements.txt
 trained.hdf5
 data/*
+!data/lexicon.pkl
 google_cloud_stuff/
 old_trained/
