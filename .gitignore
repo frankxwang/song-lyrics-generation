@@ -37,6 +37,6 @@ fabric.properties
 .floydignore
 floyd_requirements.txt
 trained.hdf5
-data/
+data/*
 google_cloud_stuff/
 old_trained/

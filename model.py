@@ -7,7 +7,7 @@ from keras.optimizers import Adagrad
 dropout = 0.1
 # num_layers = 2
 batch_size = 32
-epochs = 2
+epochs = 10
 learning_rate = 0.05
 
 
