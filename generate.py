@@ -24,15 +24,20 @@ detokenizer = MosesDetokenizer()
 
 while True:
     words = input("Type in the beginning of your song (" + str(max_words) + " words maximum) \n")
-    song = nltk.word_tokenize(words.lower())[:max_words]
-    print("Processing")
-    x = np.zeros((max_words - len(song), length))
-    try:
-        for word in song:
-            x = np.append(x, np.array([song2vec[word]]), axis=0)
-    except KeyError:
-        print("It looks like you have typed something wrong, please check your spelling and try again.")
-        continue
+    if words == "makeitrandom":
+        x = 6 * np.random.random((1, length)) - 3
+        x = np.append(np.zeros((max_words - 1, length)), x, axis=0)
+        song = np.array([])
+    else:
+        song = nltk.word_tokenize(words.lower())[:max_words]
+        print("Processing")
+        x = np.zeros((max_words - len(song), length))
+        try:
+            for word in song:
+                x = np.append(x, np.array([song2vec[word]]), axis=0)
+        except KeyError:
+            print("It looks like you have typed something wrong, please check your spelling and try again.")
+            continue
     print("Generating")
     output = song
     for i in range(length):
